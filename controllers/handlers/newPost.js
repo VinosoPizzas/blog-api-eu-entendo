@@ -8,7 +8,7 @@ const newPost = async (fastifyInstance) => {
     const { title, article, author, category } = request.body;
     const created_at = new Date().toString();
     if (request.body === null) {
-      response.status(404).send({ message: "o body da request está vazio" });
+      response.status(400).send({ message: "o body da request está vazio" });
     }
     const post = await db.prepare(
       `INSERT INTO posts (title, article, author, created_at, category) VALUES (:title, :article, :author, :created_at, :category)`
